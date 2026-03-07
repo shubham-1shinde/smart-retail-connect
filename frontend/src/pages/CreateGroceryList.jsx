@@ -8,7 +8,7 @@ export default function CreateGroceryList() {
   const [items, setItems] = useState([{ name: "", quantity: "", note: "" }]);
   const userData = useSelector((state) => state.auth.userData);
   const navigate = useNavigate();
-  //console.log("address",userData.address)
+  console.log("address",userData.address)
 
   const handleItemChange = (index, field, value) => {
     const newItems = [...items];
