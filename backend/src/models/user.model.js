@@ -31,7 +31,6 @@ const userSchema = new Schema(
         },
         city: {
             type: String,
-            lowecase: true,
             required: true,
         },
         shopName: {

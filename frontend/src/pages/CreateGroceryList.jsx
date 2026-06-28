@@ -33,7 +33,7 @@ export default function CreateGroceryList() {
       orderCity: userData.city,
     });
 
-      const response = await axios.post(`/v1/orders/create-orders/${userData.phone}`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URI}/v1/orders/create-orders/${userData.phone}`, {
         address: userData.address,
         items: filledItems,
         notes,

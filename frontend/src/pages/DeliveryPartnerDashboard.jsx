@@ -13,7 +13,7 @@ export default function DeliveryPartnerDashboard() {
   useEffect(() => {
     const getOrder = async () => {
       try {
-        const res = await axios.get(`/v1/delivery/get-delivery-order/${userData.phone}`);
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/v1/delivery/get-delivery-order/${userData.phone}`);
         console.log("Delivery Order:", res.data.data);
         setOrder(res.data.data);
       } catch (error) {

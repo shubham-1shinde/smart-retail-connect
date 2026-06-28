@@ -41,7 +41,7 @@ function Signup() {
     console.log("role", role);
 
 
-    const response = await axios.post('/v1/users/sign-up', formData)
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URI}/v1/users/sign-up`, formData)
 
     if (response){
       console.log(response.data);

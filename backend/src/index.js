@@ -6,9 +6,6 @@ import connectDB from "./db/database.js";
 import { app } from "./app.js";
 
 
-
-
-
 connectDB()
 .then(() => {
     app.listen(process.env.PORT || 8000, () => {

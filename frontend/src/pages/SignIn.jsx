@@ -26,8 +26,9 @@ export default function SignIn() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await axios.post("/v1/users/sign-in", data);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URI}/v1/users/sign-in`, data);
       console.log("login resp", response)  
+      console.log("env", import.meta.env.BACKEND_URI)  
       if(response.data.statusCode === 200){
         console.log("Login successful");
         dispatch(login({ userData: response.data.data }));

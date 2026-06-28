@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 
 const connectDB = async () => {
     try {
-        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/doctors_database`)
+        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URI}/smart_reatil_connect_database`)
         console.log(`\n MongoDB connected !! DB HOST: ${connectionInstance.connection.host}`);
     } catch (error) {
         console.log("MONGODB connection FAILED ", error);

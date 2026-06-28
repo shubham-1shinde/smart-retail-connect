@@ -17,7 +17,7 @@ export default function CustomerDashboard() {
   useEffect(() => {
     const getOrders = async() => {
       try {
-        const response = await axios.get(`/v1/orders/get-customer-orders/${userData.phone}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/v1/orders/get-customer-orders/${userData.phone}`);
         if (response) {
           setResp(response.data.data.orders);
         }

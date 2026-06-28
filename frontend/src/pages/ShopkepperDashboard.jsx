@@ -14,7 +14,7 @@ export default function ShopkepperDashboard() {
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await axios.get(`/v1/orders/get-shopkepper-orders/${userData.phone}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URI}/v1/orders/get-shopkepper-orders/${userData.phone}`);
         if (response) {
           console.log("get orders", response.data.data.orders[0].orderBy);
           setOrderBy(response.data.data.orders[0].orderBy);
