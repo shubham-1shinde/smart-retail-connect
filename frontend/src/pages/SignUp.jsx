@@ -38,10 +38,28 @@ function Signup() {
         formData.append("vehicleType", data.vehicleType);
         formData.append("licenseNo", data.licenseNo);
     }
-    console.log("role", role);
+    //console.log("role", role);
 
 
-    const response = await axios.post(`${import.meta.env.VITE_BACKEND_URI}/v1/users/sign-up`, formData)
+    const response = await axios.post(
+  `${import.meta.env.VITE_BACKEND_URI}/api/v1/users/sign-up`,
+  {
+    role,
+    fullName,
+    email,
+    phone,
+    address,
+    city,
+    shopName,
+    vehicleType,
+    licenseNo
+  },
+  {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }
+);
 
     if (response){
       console.log(response.data);
