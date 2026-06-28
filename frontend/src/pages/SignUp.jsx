@@ -9,7 +9,18 @@ function Signup() {
 
 
 
-    const onSubmit = async (data) => {
+    const [role, setRole] = useState("Customer");
+
+    const {
+      register,
+      handleSubmit,
+      formState: { errors }
+    } = useForm();
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const onSubmit = async (data) => {
   try {
     const payload = {
       fullName: data.fullName,
@@ -33,7 +44,7 @@ function Signup() {
     console.log("payload:", payload);
 
     const response = await axios.post(
-      `${import.meta.env.VITE_BACKEND_URI}/v1/users/sign-up`,
+      `${import.meta.env.VITE_BACKEND_URI}/api/v1/users/sign-up`,
       payload,
       {
         headers: {
@@ -60,7 +71,6 @@ function Signup() {
     console.error("Signup error:", error.response?.data || error.message);
   }
 };
-
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-green-100">
