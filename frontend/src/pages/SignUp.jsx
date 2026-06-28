@@ -9,73 +9,58 @@ function Signup() {
 
 
 
-    const [role, setRole] = useState("Customer");
+    const onSubmit = async (data) => {
+  try {
+    const payload = {
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+      city: data.city,
+      role: role,
+    };
 
-    const {
-      register,
-      handleSubmit,
-      formState: { errors }
-    } = useForm();
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const onSubmit = async(data) => {
-
-
-    const formData = new FormData();
-
-    formData.append("fullName", data.fullName);
-    formData.append("email", data.email);
-    formData.append("phone", data.phone);
-    formData.append("address", data.address);
-    formData.append("city", data.city);
-    formData.append("role", data.role);
+    // role-based optional fields
     if (role === "Shopkeeper") {
-        formData.append("shopName", data.shopName);
+      payload.shopName = data.shopName;
     }
-    if (role === "Delivery Partner") {
-        formData.append("vehicleType", data.vehicleType);
-        formData.append("licenseNo", data.licenseNo);
-    }
-    //console.log("role", role);
 
+    if (role === "Delivery Partner") {
+      payload.vehicleType = data.vehicleType;
+      payload.licenseNo = data.licenseNo;
+    }
+
+    console.log("payload:", payload);
 
     const response = await axios.post(
-  `${import.meta.env.VITE_BACKEND_URI}/v1/users/sign-up`,
-  {
-    role,
-    fullName,
-    email,
-    phone,
-    address,
-    city,
-    shopName,
-    vehicleType,
-    licenseNo
-  },
-  {
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }
-);
+      `${import.meta.env.VITE_BACKEND_URI}/v1/users/sign-up`,
+      payload,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
-    if (response){
+    if (response) {
       console.log(response.data);
-      localStorage.setItem('status', 'true')
+      localStorage.setItem("status", "true");
+
       dispatch(login({ userData: response.data.data }));
-      if(formData.get("role") === "Customer"){
-          navigate('/customer-dashboard');
-      }
-      else if(formData.get("role") === "Shopkeeper"){
-          navigate('/shopkepper-dashboard');
-      }
-      else if(formData.get("role") === "Delivery Partner"){
-          navigate('/delivery-partner-dashboard');
+
+      if (role === "Customer") {
+        navigate("/customer-dashboard");
+      } else if (role === "Shopkeeper") {
+        navigate("/shopkepper-dashboard");
+      } else if (role === "Delivery Partner") {
+        navigate("/delivery-partner-dashboard");
       }
     }
+  } catch (error) {
+    console.error("Signup error:", error.response?.data || error.message);
+  }
 };
+
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-green-50 to-green-100">
