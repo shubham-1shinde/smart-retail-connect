@@ -42,7 +42,7 @@ function Signup() {
 
 
     const response = await axios.post(
-  `${import.meta.env.VITE_BACKEND_URI}/api/v1/users/sign-up`,
+  `${import.meta.env.VITE_BACKEND_URI}/v1/users/sign-up`,
   {
     role,
     fullName,
