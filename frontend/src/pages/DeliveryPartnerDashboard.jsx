@@ -72,7 +72,7 @@ export default function DeliveryPartnerDashboard() {
           <button
             onClick={async () => {
               try {
-                const res =  axios.post("/v1/delivery/delivery-done",{
+                const res =  axios.post(`${import.meta.env.VITE_BACKEND_URI}/v1/delivery/delivery-done`,{
                   customer_phone: order.customer_phone,
                   shopkeeper_phone: order.shopkeeper_phone,
                   deliveryPartner_phone: userData.phone,

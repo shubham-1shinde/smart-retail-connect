@@ -148,7 +148,7 @@ export default function CustomerDashboard() {
                   <button
                     className="opacity-0 group-hover:opacity-100 transition bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium px-4 py-1.5 rounded-md absolute top-4 right-4 shadow"
                     onClick={async () => {
-                      const response = await axios.post(`/v1/orders/confirm-order`, {
+                      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URI}/v1/orders/confirm-order`, {
                         shopkeeper: sk.shopkeeper,
                         orderBy: userData.phone,
                       });

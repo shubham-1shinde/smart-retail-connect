@@ -117,7 +117,7 @@ export default function ShopkepperDashboard() {
               className="bg-green-500 text-white w-full py-2 rounded hover:bg-green-600"
               onClick={async() => {
                 console.log("Prices Sent:", prices, "Total:", totalPrice);
-                const response = await axios.patch(`/v1/orders/update-order/${orderBy}`, {
+                const response = await axios.patch(`${import.meta.env.VITE_BACKEND_URI}/v1/orders/update-order/${orderBy}`, {
                   shopkeeperPrices: prices,
                   totalPrice,
                   shopkeeper: userData.phone,
