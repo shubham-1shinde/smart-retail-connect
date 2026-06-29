@@ -1,5 +1,5 @@
 import axios from 'axios';
-import  store  from '../store/store.js';
+import store from '../src/store/store.js';
 
 axios.defaults.withCredentials = true;
 axios.defaults.baseURL = import.meta.env.VITE_BACKEND_URI + '/v1';
