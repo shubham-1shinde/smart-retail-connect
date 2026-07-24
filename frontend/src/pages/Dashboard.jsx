@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ShoppingCart, DollarSign, Truck, User, Store, Bike } from "lucide-react";
 
 export default function GroceryMatchLanding() {
-//
+
   return (
     <div className="bg-green-50 min-h-screen flex flex-col items-center font-sans">
       
