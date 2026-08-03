@@ -22,6 +22,7 @@ app.use(cookieParser())
 import userRouter from './routes/user.routes.js'
 import orderRouter from './routes/order.routes.js'
 import deliveryRouter from './routes/delivery.routes.js'
+import healthCheck from './routes/health.routes.js'
 
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/orders", orderRouter)
