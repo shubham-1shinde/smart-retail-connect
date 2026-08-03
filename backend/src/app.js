@@ -26,5 +26,6 @@ import deliveryRouter from './routes/delivery.routes.js'
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/orders", orderRouter)
 app.use("/api/v1/delivery", deliveryRouter)
+app.use("/api/v1/health", healthCheck);
 
 export { app }
